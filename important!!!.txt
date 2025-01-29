@@ -1,0 +1,7 @@
+Commandes nécessaires pour exécuter correctement le projet :
+
+php artisan storage:link
+
+php artisan migrate
+
+php artisan serve
