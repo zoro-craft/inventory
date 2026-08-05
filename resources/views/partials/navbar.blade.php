@@ -1,37 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">Gestion Du Magasin</a>
-        <button class="navbar-toggler disabled" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand fw-bold text-dark" href="{{ route('home') }}">
+            <i class="fa-solid fa-boxes-stacked me-2 text-primary"></i> Gestion du magasin
+        </a>
+
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
                 @if (session('authentication'))
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Table des produits</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{{ route('products.index') }}">
+                            <i class="fa-solid fa-cubes me-1"></i> Produits
+                        </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('products.create') }}">Ajouter un
-                            produit</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Table des
-                            catégories</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.create') }}">Ajouter une
-                            catégorie</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{{ route('categories.index') }}">
+                            <i class="fa-solid fa-tags me-1"></i> Catégories
+                        </a>
                     </li>
                 @endif
                 @if (!session('authentication'))
-                    <li class="nav-item"><a class="nav-link" href="{{ route('auth.login') }}">Se connecter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('auth.register') }}">S'inscrire</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{{ route('auth.login') }}">Se connecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{{ route('auth.register') }}">S'inscrire</a>
+                    </li>
                 @endif
             </ul>
+
             @if (session('authentication'))
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST"
-                            style="display: inline;">
+                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fa fa-sign-out"></i>
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <i class="fa-solid fa-right-from-bracket me-1"></i> Déconnexion
                             </button>
                         </form>
                     </li>
