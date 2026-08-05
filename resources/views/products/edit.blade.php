@@ -54,7 +54,7 @@
                 <div class="col-md-6">
                     <div class="d-flex flex-column">
                         <label class="form-label">Image actuelle</label>
-                        <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded-4 border" alt="{{ $product->name }}" style="width: 220px; height: 220px; object-fit: cover;">
+                        <img src="{{ Str::startsWith($product->image, ['http://', 'https://']) ? $product->image : asset('storage/' . $product->image) }}" class="img-fluid rounded-4 border" alt="{{ $product->name }}" style="width: 220px; height: 220px; object-fit: cover;">
                     </div>
                 </div>
             </div>
