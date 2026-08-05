@@ -31,7 +31,6 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>ID</th>
                         <th>Nom</th>
                         <th>Description</th>
                         <th class="text-end">Actions</th>
@@ -40,7 +39,6 @@
                 <tbody>
                     @forelse ($categories as $cat)
                         <tr>
-                            <td class="fw-semibold">#{{ $cat->id }}</td>
                             <td>{{ $cat->name }}</td>
                             <td class="text-muted">{{ $cat->description }}</td>
                             <td class="text-end">
