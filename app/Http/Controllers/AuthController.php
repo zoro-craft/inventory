@@ -72,6 +72,7 @@ class AuthController extends Controller
     {
         $request->session()->forget(['user_id', 'user_name', 'authentication']);
         $request->session()->invalidate();
+        $request->session()->regenerateToken();
         Auth::logout();
         return redirect()->route('auth.login')->with('logout_message', 'Vous êtes déconnecté avec succès.');
     }
