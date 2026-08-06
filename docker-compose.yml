@@ -20,6 +20,8 @@ services:
             DB_USERNAME: ${DB_USERNAME}
             DB_PASSWORD: ${DB_PASSWORD}
             OCTANE_SERVER: frankenphp
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         restart: always
 
 volumes:
