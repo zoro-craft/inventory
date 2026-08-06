@@ -1,9 +1,10 @@
 services:
     app:
         image: elmehdirezoug/laravel-app:latest
+        # If you want to use the prebuilt image from Docker Hub, comment out or remove the build block below.
         build:
-          context: .
-          dockerfile: Dockerfile.production
+            context: .
+            dockerfile: Dockerfile.production
         ports:
             - "127.0.0.1:9000:9000"
         volumes:
