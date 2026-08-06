@@ -51,3 +51,7 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+
+**/caddy
+frankenphp
+frankenphp-worker.php

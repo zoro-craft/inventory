@@ -20,7 +20,9 @@ class ProductController extends Controller
                 'access_denied' => 'Vous devez être connecté pour accéder à cette page.',
             ]);
         }
-        $products = Product::with('category')->get();
+        $products = Product::with('category')
+            ->orderByDesc('created_at')
+            ->get();
         return view('products.index', compact('products'));
     }
 

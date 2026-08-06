@@ -10,11 +10,13 @@
 
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-4">
         <div>
-            <h2 class="fw-bold mb-1">Produits</h2>
+            <div class="d-flex align-items-center gap-2 mb-1">
+                <h2 class="fw-bold mb-0">Produits</h2>
+                <span class="badge bg-primary rounded-pill px-3 py-2">{{ $products->count() }} éléments</span>
+            </div>
             <p class="text-muted mb-0">Gérez votre catalogue avec une vue claire et professionnelle.</p>
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2">
-            <span class="badge bg-primary rounded-pill px-3 py-2">{{ $products->count() }} éléments</span>
             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">
                 <i class="fa-solid fa-plus me-1"></i> Créer un produit
             </a>

@@ -1,0 +1,32 @@
+FROM dunglas/frankenphp:php8.2
+
+RUN apt-get update && apt-get install -y \
+    git unzip libpng-dev libonig-dev libxml2-dev curl \
+    && install-php-extensions pcntl pdo pdo_mysql mbstring exif bcmath gd opcache \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY . /app
+
+# 1. Explicitly create storage/logs and framework folders, then allow write access
+RUN rm -f bootstrap/cache/*.php \
+    && mkdir -p storage/logs \
+       storage/framework/cache/data \
+       storage/framework/sessions \
+       storage/framework/views \
+       bootstrap/cache \
+    && chmod -R 777 storage bootstrap/cache
+
+# 2. Require Octane and install dependencies
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer require laravel/octane --no-interaction --update-no-dev \
+    && composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader --no-scripts \
+    && php artisan octane:install --server=frankenphp --force \
+    && php artisan storage:link
+
+RUN chown -R www-data:www-data /app
+
+EXPOSE 9000
+
+ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=9000"]
