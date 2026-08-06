@@ -27,19 +27,18 @@
                     </li>
                 @endif
             </ul>
-
-            @if (session('authentication'))
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                <i class="fa-solid fa-right-from-bracket me-1"></i> Déconnexion
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            @endif
         </div>
+
+        @if (session('authentication'))
+            <div class="d-flex align-items-center ms-3">
+                <form id="logout-form" action="{{ route('auth.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                        <i class="fa-solid fa-right-from-bracket me-1"></i>
+                        <span class="d-none d-sm-inline">Déconnexion</span>
+                    </button>
+                </form>
+            </div>
+        @endif
     </div>
 </nav>

@@ -51,6 +51,27 @@
                     </button>
                 </form>
 
+                <div class="mt-4">
+                    <div class="d-grid gap-2">
+                        <form action="{{ route('auth.verifyLogin') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="email" value="user1@example.com">
+                            <input type="hidden" name="password" value="password123">
+                            <button type="submit" class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-user me-2"></i> Se connecter en tant que User 1
+                            </button>
+                        </form>
+                        <form action="{{ route('auth.verifyLogin') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="email" value="user2@example.com">
+                            <input type="hidden" name="password" value="password123">
+                            <button type="submit" class="btn btn-outline-secondary w-100">
+                                <i class="fa-solid fa-user me-2"></i> Se connecter en tant que User 2
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="text-center mt-4">
                     <p class="mb-0 text-muted">Vous n'avez pas de compte ? <a href="{{ route('auth.register') }}" class="text-primary fw-semibold">Inscrivez-vous</a></p>
                 </div>

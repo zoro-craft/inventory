@@ -6,6 +6,8 @@ services:
           dockerfile: Dockerfile.production
         ports:
             - "127.0.0.1:9000:9000"
+        volumes:
+            - laravel_uploads:/app/storage/app/public
         environment:
             APP_ENV: production
             APP_DEBUG: "false"
@@ -18,3 +20,6 @@ services:
             DB_PASSWORD: ${DB_PASSWORD}
             OCTANE_SERVER: frankenphp
         restart: always
+
+volumes:
+    laravel_uploads:

@@ -15,13 +15,16 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
+            <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm mb-3">
+                <i class="fa-solid fa-arrow-left"></i><span class="d-none d-sm-inline ms-1">Retour</span>
+            </a>
             <h2 class="fw-bold mb-1">Catégories</h2>
             <p class="text-muted mb-0">Organisez vos produits par catégorie de manière propre et simple.</p>
         </div>
         <div class="d-flex align-items-center gap-2">
             <span class="badge bg-primary rounded-pill px-3 py-2">{{ $categories->count() }} éléments</span>
             <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm">
-                <i class="fa-solid fa-plus me-1"></i> Créer une catégorie
+                <i class="fa-solid fa-plus"></i><span class="d-none d-sm-inline ms-1">Créer une catégorie</span>
             </a>
         </div>
     </div>
