@@ -1,0 +1,20 @@
+services:
+    app:
+        image: elmehdirezoug/laravel-app:latest
+        build:
+          context: .
+          dockerfile: Dockerfile.production
+        ports:
+            - "127.0.0.1:9000:9000"
+        environment:
+            APP_ENV: production
+            APP_DEBUG: "false"
+            APP_URL: http://your-domain-or-ip
+            DB_CONNECTION: mysql
+            DB_HOST: ${DB_HOST}
+            DB_PORT: ${DB_PORT}
+            DB_DATABASE: ${DB_DATABASE}
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+            OCTANE_SERVER: frankenphp
+        restart: always

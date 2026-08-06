@@ -29,4 +29,4 @@ RUN chown -R www-data:www-data /app
 
 EXPOSE 9000
 
-ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=9000"]
+ENTRYPOINT ["sh", "-c", "if [ ! -f storage/app/app_key.txt ]; then php -r 'echo base64_encode(random_bytes(32));' | tr -d '\n' > storage/app/app_key.txt; fi; export APP_KEY='base64:'$(cat storage/app/app_key.txt | tr -d '\n'); php artisan migrate --seed --force; php artisan octane:start --server=frankenphp --host=0.0.0.0 --port=9000"]
